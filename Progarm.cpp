@@ -40,7 +40,7 @@ int main(int argc, char** argv)
     sortBench.RegisterBenchmarkByType(SortBenchmarkType::BubbleSort);
     sortBench.RegisterBenchmarkByType(SortBenchmarkType::InsertionSort);
     sortBench.RegisterBenchmarkByType(SortBenchmarkType::MergeSort);
-
+	sortBench.RegisterBenchmarkByType(SortBenchmarkType::SelectionSort);
 
     // Запуск бенчмарков
     benchmark::Initialize(&argc, argv);

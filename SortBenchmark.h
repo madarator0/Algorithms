@@ -8,7 +8,8 @@ enum class SortBenchmarkType {
     QuickSort,
     MergeSort,
     HeapSort,
-    InsertionSort
+    InsertionSort,
+    SelectionSort
 };
 
 
@@ -24,6 +25,7 @@ public:
     void BM_MergeSort(benchmark::State& state);
     void BM_HeapSort(benchmark::State& state);
     void BM_InsertionSort(benchmark::State& state);
+	void BM_SelectionSort(benchmark::State& state);
 
     void RegisterBenchmarkByType(SortBenchmarkType benchmarkType);
 };

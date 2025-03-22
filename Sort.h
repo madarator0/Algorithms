@@ -15,6 +15,8 @@ public:
 	// Сортировка пузырьком (BubbleSort)
 	SortRes BubbleSort(const std::vector<int>& input);
 
+	SortRes SelectionSort(const std::vector<int>& input);
+
 	// Быстрая сортировка (QuickSort)
 	void QuickSort(std::vector<int>& arr, int low, int high, int& swapCount);
 	SortRes QuickSort(const std::vector<int>& input);

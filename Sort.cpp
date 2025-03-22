@@ -208,3 +208,32 @@ void Sort::InsertionSort(std::vector<int>& arr, int& swapCount)
         arr[j + 1] = key;
     }
 }
+
+// Сортировка выбором
+SortRes Sort::SelectionSort(const std::vector<int>& input)
+{
+    std::vector<int> arr = input; // Создаем копию входного вектора
+    int swapCount = 0;  // Инициализируем счетчик обменов
+    size_t memoryBefore = MemoryUsage::GetMemoryUsage(); // Начальное потребление памяти
+
+    int n = arr.size();
+    for (int i = 0; i < n - 1; ++i)
+    {
+        int minIndex = i;
+        for (int j = i + 1; j < n; ++j)
+        {
+            if (arr[j] < arr[minIndex])
+            {
+                minIndex = j;
+            }
+        }
+        if (minIndex != i)
+        {
+            MySwap(arr[i], arr[minIndex]); // Обмен элементов
+            swapCount++;  // Увеличиваем счетчик обменов
+        }
+    }
+
+    size_t memoryAfter = MemoryUsage::GetMemoryUsage();
+    return { swapCount, memoryAfter - memoryBefore, arr };
+}

@@ -16,6 +16,16 @@ void SortBenchmark::BM_BubbleSort(benchmark::State& state) {
     state.counters["MemoryUsage"] = result.Memory / 1024.0; // ย สม
 }
 
+void SortBenchmark::BM_SelectionSort(benchmark::State& state) {
+	Sort sorter;
+	SortRes result;
+	for (auto _ : state) {
+		result = sorter.SelectionSort(numbers);
+	}
+	state.counters["SwapCount"] = result.SwapCount;
+	state.counters["MemoryUsage"] = result.Memory / 1024.0; // ย สม
+}
+
 void SortBenchmark::BM_QuickSort(benchmark::State& state) {
     Sort sorter;
     SortRes result;
@@ -75,6 +85,8 @@ void SortBenchmark::RegisterBenchmarkByType(SortBenchmarkType benchmarkType) {
     case SortBenchmarkType::InsertionSort:
         benchmark::RegisterBenchmark("InsertionSort", [this](benchmark::State& state) { BM_InsertionSort(state); });
         break;
+	case SortBenchmarkType::SelectionSort:
+		benchmark::RegisterBenchmark("SelectionSort", [this](benchmark::State& state) { BM_SelectionSort(state); });
     default:
         break;
     }
